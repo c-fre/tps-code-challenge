@@ -30,6 +30,7 @@ app.get("/listall", (req, res) => {
 
 app.post("/createuser", (req, res) => {
   var data = {
+    clientID: req.body.clientID,
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     dateBirth: req.body.dateBirth,
@@ -38,7 +39,8 @@ app.post("/createuser", (req, res) => {
   };
 
   db.run(
-    "INSERT INTO clientInfo (firstName, lastName, dateBirth, languages, fundingSource) VALUES (?,?,?,?,?)",
+    "INSERT INTO clientInfo (clientID, firstName, lastName, dateBirth, languages, fundingSource) VALUES (?,?,?,?,?,?)",
+    data.clientID,
     data.firstName,
     data.lastName,
     data.dateBirth,
@@ -48,10 +50,6 @@ app.post("/createuser", (req, res) => {
       if (err) {
         res.status(400).json({ error: err.message });
       }
-      res.json({
-        message: "success",
-        data: data,
-      });
     }
   );
 });
