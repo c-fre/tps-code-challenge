@@ -7,8 +7,8 @@ const App = () => {
   // App Section //
   return (
     <>
-      <CreateUser />
       <UserList />
+      <CreateUser />
     </>
   );
 };

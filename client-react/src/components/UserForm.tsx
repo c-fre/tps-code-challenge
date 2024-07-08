@@ -1,11 +1,5 @@
-import "./UserForm.css";
+import React from "react";
 
-const UserForm = () => {
-  return (
-    <>
-      <section></section>
-    </>
-  );
-};
-
-export default UserForm;
+export default function UserForm() {
+  return <div></div>;
+}

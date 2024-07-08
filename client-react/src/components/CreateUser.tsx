@@ -25,11 +25,9 @@ const CreateUser = () => {
 
   const submitFunc = (e: any) => {
     e.preventDefault();
-    console.log(formData); //TEST CONSOLE TO REMOVE
 
     //Language Format
-    let langCheck = null;
-    langCheck = formData.languages.trim();
+    let langCheck = formData.languages.trim();
     if (formData.languages.includes(",")) {
       langCheck = langCheck.replace(/\s+/g, "");
       formData.languages = langCheck;
