@@ -8,5 +8,5 @@ SELECT max(clientID) FROM clientInfo
 ALTER TABLE clientInfo RENAME TO _clientInfoOLD
 
 SELECT * FROM clientInfo
-DELETE FROM clientInfo WHERE FirstName="John"
+DELETE FROM clientInfo WHERE FirstName="Cole"
 DELETE FROM clientInfo WHERE FirstName IS NULL
