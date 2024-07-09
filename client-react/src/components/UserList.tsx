@@ -39,6 +39,7 @@ function UserList() {
     <>
       <section className="usersectionbox">
         <h1>Current Users List</h1>
+
         <table className="usersectiontable">
           <thead>
             <tr className="tableheader">

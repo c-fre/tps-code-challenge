@@ -60,16 +60,16 @@ td {
   flex-basis: 20%;
 }
 
-button {
+.editbutton {
+  background-color: rgba(5, 207, 5, 0.795);
   width: 100%;
   border: none;
   border-radius: 3px;
 }
 
-.editbutton {
-  background-color: rgba(5, 207, 5, 0.795);
-}
-
 .deletebutton {
   background-color: rgb(221, 4, 4);
+  width: 100%;
+  border: none;
+  border-radius: 3px;
 }
