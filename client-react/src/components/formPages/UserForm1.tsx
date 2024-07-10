@@ -1,55 +1,59 @@
-type page1Data = {
-  firstName: string;
-  lastName: string;
-  dateBirth: string;
-};
+import { FormEvent } from "react";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
-type UserForm1Props = page1Data & {
-  changeUpdate: (fields: Partial<page1Data>) => void;
-};
+export function UserForm1({ values, changeUpdate, nextPage }: any) {
+  const nextPageCheck = (e: FormEvent) => {
+    e.preventDefault();
 
-export function UserForm1({
-  firstName,
-  lastName,
-  dateBirth,
-  changeUpdate,
-}: UserForm1Props) {
+    if (
+      values.firstName === "" ||
+      values.lastName === "" ||
+      values.dateBirth === ""
+    ) {
+    } else {
+      nextPage();
+    }
+  };
+
   return (
-    <>
-      <label className="forminputsec">
-        First Name:
+    <form onSubmit={nextPageCheck}>
+      <label className="forminput">
+        <h2>First Name:</h2>
         <input
           type="text"
           placeholder="Enter First Name"
           name="firstName"
           onChange={(e) => changeUpdate({ firstName: e.target.value })}
-          value={firstName}
+          value={values.firstName}
           required
         />
       </label>
 
-      <label className="forminputsec">
-        Last Name:
+      <label className="forminput">
+        <h2>Last Name:</h2>
         <input
           type="text"
           placeholder="Enter Last Name"
           name="lastName"
           onChange={(e) => changeUpdate({ lastName: e.target.value })}
-          value={lastName}
+          value={values.lastName}
           required
         />
       </label>
 
-      <label className="forminputsec">
-        Date of Birth:
+      <label className="forminput smallsec">
+        <h2>Date of Birth:</h2>
         <input
           type="date"
           name="dateBirth"
           onChange={(e) => changeUpdate({ dateBirth: e.target.value })}
-          value={dateBirth}
+          value={values.dateBirth}
           required
         />
       </label>
-    </>
+      <button className="nextButton">
+        <i className="fa-solid fa-check" /> Next
+      </button>
+    </form>
   );
 }
