@@ -42,8 +42,7 @@ export function UserForm2({ values, backPage, nextPage, changeUpdate }: any) {
         </select>
       </label>
       <button type="button" onClick={backPage} className="backButton">
-        <i className="fa-solid fa-arrow-left" />
-        Prev
+        <i className="fa-solid fa-arrow-left" /> Back
       </button>
       <button type="submit" onClick={nextPageCheck} className="nextButton">
         <i className="fa-solid fa-check" /> Next

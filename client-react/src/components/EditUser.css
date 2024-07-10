@@ -1,114 +1,93 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+.editbutton {
+  text-align: center;
+  display: inline-block;
+  background-color: rgba(0, 0, 0, 0);
+  color: rgb(70, 221, 32);
+  border: 1px solid rgb(70, 221, 32);
+  border-radius: 4px;
+  padding: 2px;
+  transition-duration: 0.5s;
+  width: 100%;
+  height: auto;
+}
 
-* {
+.editbutton:hover {
+  background-color: rgb(70, 221, 32);
+  color: white;
+  cursor: pointer;
+}
+
+.deletebutton {
+  text-align: center;
+  display: inline-block;
+  background-color: rgba(0, 0, 0, 0);
+  color: rgb(221, 32, 32);
+  border: 1px solid rgb(221, 32, 32);
+  border-radius: 4px;
+  padding: 2px;
+  transition-duration: 0.5s;
+  width: 100%;
+  height: auto;
+  margin-top: 2px;
+}
+
+.deletebutton:hover {
+  background-color: rgb(221, 32, 32);
+  color: white;
+  cursor: pointer;
+}
+
+.submitbutton {
+  text-align: center;
+  display: inline-block;
+  background-color: rgba(0, 0, 0, 0);
+  color: rgb(70, 221, 32);
+  border: 1px solid rgb(70, 221, 32);
+  border-radius: 4px;
+  padding: 2px;
+  transition-duration: 0.5s;
+  width: 200px;
+  height: auto;
+}
+
+.submitbutton:hover {
+  background-color: rgb(70, 221, 32);
+  color: white;
+  cursor: pointer;
+}
+
+.backbutton {
+  text-align: center;
+  display: inline-block;
+  background-color: rgba(0, 0, 0, 0);
+  color: rgb(221, 32, 32);
+  border: 1px solid rgb(221, 32, 32);
+  border-radius: 4px;
+  padding: 2px;
+  transition-duration: 0.5s;
+  width: 200px;
+  height: auto;
+}
+
+.backbutton:hover {
+  background-color: rgb(221, 32, 32);
+  color: white;
+  cursor: pointer;
+}
+
+.editbox label {
+  display: block;
+}
+
+.editbox h4 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  display: block;
+}
+
+.editbox em {
   font-family: "Roboto", sans-serif;
   font-weight: 500;
-  font-style: normal;
-}
-
-.modalButton {
-  text-align: center;
-  display: inline-block;
-  background-color: rgba(0, 0, 0, 0);
-  color: rgb(70, 221, 32);
-  border: 1px solid rgb(70, 221, 32);
-  border-radius: 4px;
-  padding: 5px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  transition-duration: 0.5s;
-  width: 200px;
-  height: auto;
-}
-
-.modalButton:hover {
-  background-color: rgb(70, 221, 32);
-  color: white;
-  cursor: pointer;
-}
-
-.closebutton {
-  background-color: rgba(0, 0, 0, 0);
-  color: rgb(221, 32, 32);
-  border: 1px solid rgb(221, 32, 32);
-  border-radius: 4px;
-  padding: 5px;
-  margin-top: 0px;
-  transition-duration: 0.5s;
-  width: auto;
-  height: auto;
-  position: absolute;
-  right: 0;
-  margin-right: 10px;
-}
-
-.closebutton:hover {
-  background-color: rgb(221, 32, 32);
-  color: white;
-  cursor: pointer;
-}
-
-.modalbox form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  justify-items: center;
-}
-
-.forminput {
-  margin-top: 5px;
-}
-
-.forminput input {
-  border: none;
-  appearance: none;
-  padding: 12px;
-  background: #f2f2f2;
-  border-radius: 3px;
-  margin-top: 5px;
-  width: 75%;
-}
-
-.smallsec {
-  width: 30%;
-}
-
-.nextButton {
-  text-align: center;
-  display: inline-block;
-  background-color: rgba(0, 0, 0, 0);
-  color: rgb(70, 221, 32);
-  border: 1px solid rgb(70, 221, 32);
-  border-radius: 4px;
-  padding: 5px;
-  margin-top: 10px;
-  transition-duration: 0.5s;
-  width: 200px;
-  height: auto;
-}
-
-.nextButton:hover {
-  background-color: rgb(70, 221, 32);
-  color: white;
-  cursor: pointer;
-}
-
-.backButton {
-  text-align: center;
-  display: inline-block;
-  background-color: rgba(0, 0, 0, 0);
-  color: rgb(221, 32, 32);
-  border: 1px solid rgb(221, 32, 32);
-  border-radius: 4px;
-  padding: 5px;
-  margin-top: 10px;
-  transition-duration: 0.5s;
-  width: 200px;
-  height: auto;
-}
-
-.backButton:hover {
-  background-color: rgb(221, 32, 32);
-  color: white;
-  cursor: pointer;
+  font-style: italic;
 }

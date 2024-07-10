@@ -47,11 +47,11 @@ export default function UserFormSubmit({ values, backPage }: any) {
             <p>Spoken Languages: {values.languages}</p>
             <p>Funding Source: {values.fundingSource}</p>
             <button type="button" onClick={backPage} className="backButton">
-              Prev
+              <i className="fa-solid fa-arrow-left" /> Go Back
             </button>
             <br />
             <button type="button" onClick={submitFunc} className="nextButton">
-              Submit User
+              <i className="fa-solid fa-check" /> Submit User
             </button>
           </div>
         </>

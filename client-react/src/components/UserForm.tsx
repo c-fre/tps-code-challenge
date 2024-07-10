@@ -50,53 +50,83 @@ export default function UserForm({}: any) {
     case false:
       return (
         <div>
-          <button onClick={toggleModal}>Modal Toggle</button>
+          <button className="modalButton" onClick={toggleModal}>
+            <i className="fa-solid fa-plus" /> Add User
+          </button>
         </div>
       );
     case true: {
       switch (currPage) {
         case 0:
           return (
-            <div className="overlay">
-              <div className="flexbox">
-                <div className="modalbox">
-                  <button onClick={toggleModal}>close</button>
-                  <h1>Please Enter User Data:</h1>
-                  <UserForm1
-                    nextPage={nextPage}
-                    changeUpdate={changeUpdate}
-                    values={formData}
-                  />
+            <>
+              <div>
+                <button className="modalButton" onClick={toggleModal}>
+                  <i className="fa-solid fa-plus" /> Add User
+                </button>
+              </div>
+              <div className="overlay">
+                <div className="flexbox">
+                  <div className="modalbox">
+                    <button className="closebutton" onClick={toggleModal}>
+                      <i className="fa-solid fa-xmark" />
+                    </button>
+                    <h1>Please Enter User Data:</h1>
+                    <UserForm1
+                      nextPage={nextPage}
+                      changeUpdate={changeUpdate}
+                      values={formData}
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
+            </>
           );
         case 1:
           return (
-            <div className="overlay">
-              <div className="flexbox">
-                <div className="modalbox">
-                  <button onClick={toggleModal}>close</button>
-                  <h1>Please Enter User Data:</h1>
-                  <UserForm2
-                    nextPage={nextPage}
-                    backPage={backPage}
-                    changeUpdate={changeUpdate}
-                    values={formData}
-                  />
+            <>
+              <div>
+                <button className="modalButton" onClick={toggleModal}>
+                  <i className="fa-solid fa-plus" /> Add User
+                </button>
+              </div>
+              <div className="overlay">
+                <div className="flexbox">
+                  <div className="modalbox">
+                    <button className="closebutton" onClick={toggleModal}>
+                      <i className="fa-solid fa-xmark" />
+                    </button>
+                    <h1>Please Enter User Data:</h1>
+                    <UserForm2
+                      nextPage={nextPage}
+                      backPage={backPage}
+                      changeUpdate={changeUpdate}
+                      values={formData}
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
+            </>
           );
         case 2:
           return (
-            <div className="overlay">
-              <div className="flexbox">
-                <div className="modalbox">
-                  <UserFormSubmit values={formData} backPage={backPage} />
+            <>
+              <div>
+                <button className="modalButton" onClick={toggleModal}>
+                  <i className="fa-solid fa-plus" /> Add User
+                </button>
+              </div>
+              <div className="overlay">
+                <div className="flexbox">
+                  <div className="modalbox">
+                    <button className="closebutton" onClick={toggleModal}>
+                      <i className="fa-solid fa-xmark" />
+                    </button>
+                    <UserFormSubmit values={formData} backPage={backPage} />
+                  </div>
                 </div>
               </div>
-            </div>
+            </>
           );
       }
     }

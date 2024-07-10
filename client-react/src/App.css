@@ -7,5 +7,36 @@
 }
 
 .mainpage {
-  background-color: aliceblue;
+}
+
+.overlay {
+  background-color: #58585842;
+  top: 0;
+  left: 0;
+  right: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+  position: fixed;
+}
+
+.flexbox {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.modalbox {
+  position: relative;
+  width: 600px;
+  height: auto;
+  background-color: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(110, 110, 110, 0.3),
+    inset 0 -3px 3px rgba(146, 145, 145, 0.1);
 }

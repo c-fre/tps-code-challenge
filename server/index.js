@@ -13,10 +13,15 @@ const db = new sqlite.Database("./database/userDB.db", (err) => {
   }
   console.log("Express Init.");
 });
-
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  methods: "*",
+  origin: "*",
+}));
 
+
+
+//List All Users (UserList)
 app.get("/listall", (req, res) => {
   db.all("SELECT * FROM clientInfo", (err, rows) => {
     if (err) {
@@ -28,6 +33,41 @@ app.get("/listall", (req, res) => {
   });
 });
 
+//Get Single User (EditUser/DeleteUser)
+app.get("/getuser/:id", (req,res) => {
+  var id = req.params.id;
+  
+
+db.get("SELECT * FROM clientInfo WHERE clientID = ?",[id],(err,row) => {
+  if(err) {
+    console.log(err.message);
+    res.status(500).send("Internal error");
+    return;
+  } else if (!row) {
+    res.status(404).send('User Not Found');
+  } else {
+    res.send(row)
+  }
+})});
+
+//Update User (EditUser)
+app.put("/updateuser/:id", (req, res) => {
+  
+  var data = {
+    clientID: req.params["id"],
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    dateBirth: req.body.dateBirth,
+    languages: req.body.languages,
+    fundingSource: req.body.fundingSource,
+  };
+
+  db.run("UPDATE clientInfo SET FirstName = ? , LastName = ? , DateBirth = ? , Languages = ? , FundingSource = ? WHERE clientID = ?",
+    [data.firstName, data.lastName, data.dateBirth, data.languages, data.fundingSource, data.clientID]
+  )
+})
+
+//Create User to DB (UserForm)
 app.post("/createuser", (req, res) => {
   var data = {
     clientID: req.body.clientID,

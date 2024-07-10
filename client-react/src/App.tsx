@@ -1,14 +1,12 @@
 import "./App.css";
+import EditUser from "./components/EditUser";
 
-import UserForm from "./components/UserForm";
 import UserList from "./components/UserList";
 
 const App = () => {
   // App Section //
   return (
-    <div>
-      <h1> Title Of Site </h1>
-      <UserForm />
+    <div className="mainpage">
       <UserList />
     </div>
   );
