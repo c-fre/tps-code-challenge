@@ -5,6 +5,7 @@ export function UserForm2({ values, backPage, nextPage, changeUpdate }: any) {
   const nextPageCheck = (e: FormEvent) => {
     e.preventDefault();
 
+    // Easy No Submit to Allow form to recheck & not allow if blank //
     if (values.languages === "" || values.fundingSource === "") {
     } else {
       nextPage();

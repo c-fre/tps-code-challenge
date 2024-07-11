@@ -28,10 +28,12 @@ export default function EditUser(editID: any) {
     Languages: "",
     FundingSource: "",
   });
-  const [loading, setLoading] = useState(false);
+
+  // State Setups //
   const [page, setPage] = useState(0);
   const [modal, setModal] = useState(false);
 
+  // Toggle Open / Close Modal (Also clears states on close) //
   function toggleModal() {
     if (modal === false) {
       setModal(true);
@@ -91,8 +93,7 @@ export default function EditUser(editID: any) {
       }),
     });
 
-    setPage(2);
-    setLoading(true);
+    setPage(3);
     setTimeout(() => {
       location.reload();
     }, 5000);
@@ -110,8 +111,7 @@ export default function EditUser(editID: any) {
       }),
     });
 
-    setPage(2);
-    setLoading(true);
+    setPage(3);
     setTimeout(() => {
       location.reload();
     }, 5000);
@@ -134,6 +134,7 @@ export default function EditUser(editID: any) {
     setNewData((prevData) => ({ ...prevData, [name]: value }));
   }
 
+  // Switch on Modal Display open or closed //
   switch (modal) {
     case false:
       return (
@@ -147,6 +148,7 @@ export default function EditUser(editID: any) {
       );
     case true:
       switch (page) {
+        // Initial Edit Page //
         case 0:
           return (
             <>
@@ -245,6 +247,8 @@ export default function EditUser(editID: any) {
               </div>
             </>
           );
+
+        // Edit Confirm Page //
         case 1:
           return (
             <>
@@ -328,6 +332,8 @@ export default function EditUser(editID: any) {
               </div>
             </>
           );
+
+        // Deletion Confirm Page //
         case 2:
           return (
             <>
@@ -379,7 +385,7 @@ export default function EditUser(editID: any) {
                       color="primary"
                       onClick={backPage}
                     >
-                      Go Back
+                      Cancel
                     </button>
                     <button
                       className="submitbutton"
@@ -387,20 +393,33 @@ export default function EditUser(editID: any) {
                       color="primary"
                       onClick={deleteUser}
                     >
-                      Confirm
+                      Confirm Deletion
                     </button>
                   </div>
                 </div>
               </div>
             </>
           );
+
+        // Loading Page //
         case 3:
           return (
-            <div>
-              <img src="/DualRing.svg" />
-              <h3>Creating User!</h3>
-              <h4>Page will refresh shortly...</h4>
-            </div>
+            <>
+              <div>
+                <button className="editbutton" onClick={toggleModal}>
+                  Edit
+                </button>
+              </div>
+              <div className="overlay">
+                <div className="flexbox">
+                  <div className="modalbox">
+                    <img src="/DualRing.svg" />
+                    <h3>Editing User!</h3>
+                    <h4>Page will refresh shortly...</h4>
+                  </div>
+                </div>
+              </div>
+            </>
           );
       }
   }

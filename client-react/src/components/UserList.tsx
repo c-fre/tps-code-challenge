@@ -7,7 +7,7 @@ import EditUser from "./EditUser";
 function UserList() {
   const [userData, setUserData] = useState<any[]>([]);
 
-  // TEST - List all clients to console //
+  // API - Grab all users and set to an array //
   useEffect(() => {
     axios.get(`http://localhost:3000/listall`).then((res) => {
       let userRes = res.data;
@@ -15,6 +15,7 @@ function UserList() {
     });
   }, []);
 
+  // Map all users to table results //
   var userDisplay = [];
   userDisplay = userData.map((item, index) => {
     if (item.Languages.includes(",")) {
@@ -35,6 +36,7 @@ function UserList() {
     );
   });
 
+  // Set table headers //
   return (
     <>
       <section className="usersectionbox">

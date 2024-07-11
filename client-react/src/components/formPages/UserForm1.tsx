@@ -3,8 +3,9 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 
 export function UserForm1({ values, changeUpdate, nextPage }: any) {
   const nextPageCheck = (e: FormEvent) => {
-    e.preventDefault();
+    e.preventDefault(); // -> Tell the button "NO DO NOT SUBMIT" //
 
+    // Easy No Submit to Allow form to recheck & not allow if blank //
     if (
       values.firstName === "" ||
       values.lastName === "" ||

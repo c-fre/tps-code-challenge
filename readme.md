@@ -2,21 +2,25 @@
 
 ## To Run the App:
 
-### Run Client (Web Side)
+### 1. Download Code
 
-cd ./client-react/
-npm i
+Download code from this Github
+
+### 2. Run Server (DB / Express)
+
+cd ./server/<br/>
+npm i<br/>
 npm run dev
 
-### Run Server (DB / Express)
+### 3. Run Client (Web Side)
 
-cd ./server/
-npm i
+cd ./client-react/<br/>
+npm i<br/>
 npm run dev
 
 ## Decisions - Modules:
 
-CORS Module - Allow module to handle CORS Requests
+CORS Module - Allow module to safely handle CORS Requests
 
 SQLite - Used as it is very lightweight & can be locally stored easily
 

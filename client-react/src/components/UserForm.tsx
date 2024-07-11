@@ -57,6 +57,7 @@ export default function UserForm({}: any) {
       );
     case true: {
       switch (currPage) {
+        // User Form Page 1 //
         case 0:
           return (
             <>
@@ -82,6 +83,8 @@ export default function UserForm({}: any) {
               </div>
             </>
           );
+
+        // User Form Page 2 //
         case 1:
           return (
             <>
@@ -108,6 +111,8 @@ export default function UserForm({}: any) {
               </div>
             </>
           );
+
+        // User Form Page 3 / Confirm Page //
         case 2:
           return (
             <>
