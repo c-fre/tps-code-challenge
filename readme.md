@@ -1,4 +1,4 @@
-# Cole French - Turnpoint Code Challenge
+# Cole F - Turnpoint Code Challenge
 
 ## To Run the App:
 
