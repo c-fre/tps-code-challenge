@@ -1,10 +1,10 @@
 const express = require("express");
 const cors = require("cors");
+const app = express();
 
 const sqlite = require("sqlite3").verbose();
 const json = express.json();
 
-const app = express();
 const port = process.env.PORT || 3000;
 
 const db = new sqlite.Database("./database/userDB.db", (err) => {
@@ -13,13 +13,14 @@ const db = new sqlite.Database("./database/userDB.db", (err) => {
   }
   console.log("Express Init.");
 });
+
 app.use(express.json());
-app.use(cors({
-  methods: "*",
-  origin: "*",
-}));
-
-
+app.use(
+  cors({
+    methods: "*",
+    origin: "*",
+  })
+);
 
 //List All Users (UserList)
 app.get("/listall", (req, res) => {
@@ -34,27 +35,26 @@ app.get("/listall", (req, res) => {
 });
 
 //Get Single User (EditUser/DeleteUser)
-app.get("/getuser/:id", (req,res) => {
+app.get("/getuser/:id", (req, res) => {
   var id = req.params.id;
-  
 
-db.get("SELECT * FROM clientInfo WHERE clientID = ?",[id],(err,row) => {
-  if(err) {
-    console.log(err.message);
-    res.status(500).send("Internal error");
-    return;
-  } else if (!row) {
-    res.status(404).send('User Not Found');
-  } else {
-    res.send(row)
-  }
-})});
+  db.get("SELECT * FROM clientInfo WHERE clientID = ?", [id], (err, row) => {
+    if (err) {
+      console.log(err.message);
+      res.status(500).send("Internal error");
+      return;
+    } else if (!row) {
+      res.status(404).send("User Not Found");
+    } else {
+      res.send(row);
+    }
+  });
+});
 
 //Update User (EditUser)
 app.put("/updateuser/:id", (req, res) => {
-  
   var data = {
-    clientID: req.params["id"],
+    clientID: req.params.id,
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     dateBirth: req.body.dateBirth,
@@ -62,10 +62,40 @@ app.put("/updateuser/:id", (req, res) => {
     fundingSource: req.body.fundingSource,
   };
 
-  db.run("UPDATE clientInfo SET FirstName = ? , LastName = ? , DateBirth = ? , Languages = ? , FundingSource = ? WHERE clientID = ?",
-    [data.firstName, data.lastName, data.dateBirth, data.languages, data.fundingSource, data.clientID]
-  )
-})
+  db.run(
+    "UPDATE clientInfo SET FirstName = ? , LastName = ? , DateBirth = ? , Languages = ? , FundingSource = ? WHERE clientID = ?",
+    [
+      data.firstName,
+      data.lastName,
+      data.dateBirth,
+      data.languages,
+      data.fundingSource,
+      data.clientID,
+    ],
+    (err) => {
+      if (err) {
+        console.log(err.message);
+        res.status(500).send("Internal error");
+        return;
+      }
+    }
+  );
+});
+
+//Delete User (EditUser)
+app.delete("/deleteuser/:id", (req, res) => {
+  var data = {
+    clientID: req.params.id,
+  };
+
+  db.run("DELETE FROM clientInfo WHERE clientID=?", [data.clientID], (err) => {
+    if (err) {
+      console.log(err.message);
+      res.status(500).send("Internal error");
+      return;
+    }
+  });
+});
 
 //Create User to DB (UserForm)
 app.post("/createuser", (req, res) => {

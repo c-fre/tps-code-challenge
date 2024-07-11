@@ -20,7 +20,7 @@ export default function EditUser(editID: any) {
     FundingSource: "",
   });
 
-  const [originalData, setOriginalData] = useState({
+  const [originalData, setOriginalData] = useState<baseFormData>({
     clientID: 0,
     FirstName: "",
     LastName: "",
@@ -28,7 +28,7 @@ export default function EditUser(editID: any) {
     Languages: "",
     FundingSource: "",
   });
-
+  const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(0);
   const [modal, setModal] = useState(false);
 
@@ -58,6 +58,7 @@ export default function EditUser(editID: any) {
     }
   }
 
+  //API - Get the users current info
   function getUserCall() {
     fetch(`http://localhost:3000/getuser/${editID.editID}`, {
       method: "GET",
@@ -72,13 +73,16 @@ export default function EditUser(editID: any) {
       });
   }
 
+  //API - Update User w/ new Info
   function updateUser() {
+    console.log(newData);
     fetch(`http://localhost:3000/updateuser/${editID.editID}`, {
-      method: "UPDATE",
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
+        clientID: editID.editID,
         firstName: newData.FirstName,
         lastName: newData.LastName,
         dateBirth: newData.DateBirth,
@@ -86,6 +90,31 @@ export default function EditUser(editID: any) {
         fundingSource: newData.FundingSource,
       }),
     });
+
+    setPage(2);
+    setLoading(true);
+    setTimeout(() => {
+      location.reload();
+    }, 5000);
+  }
+
+  //API - Delete the user
+  function deleteUser() {
+    fetch(`http://localhost:3000/deleteuser/${editID.editID}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        clientID: editID.editID,
+      }),
+    });
+
+    setPage(2);
+    setLoading(true);
+    setTimeout(() => {
+      location.reload();
+    }, 5000);
   }
 
   function nextPage() {
@@ -94,6 +123,10 @@ export default function EditUser(editID: any) {
 
   function backPage() {
     setPage(0);
+  }
+
+  function delPage() {
+    setPage(2);
   }
 
   function changeUpdate(e: any) {
@@ -131,6 +164,10 @@ export default function EditUser(editID: any) {
                     <h1>Please Edit User Data:</h1>
                     <form onSubmit={nextPage} className="editbox">
                       <p>Client ID #{newData.clientID}</p>
+                      <button className="backbutton" onClick={delPage}>
+                        {" "}
+                        DELETE USER{" "}
+                      </button>
                       <label className="forminput">
                         <h2>First Name:</h2>
                         <input
@@ -290,6 +327,80 @@ export default function EditUser(editID: any) {
                 </div>
               </div>
             </>
+          );
+        case 2:
+          return (
+            <>
+              <div>
+                <button className="editbutton" onClick={toggleModal}>
+                  Edit
+                </button>
+              </div>
+              <div className="overlay">
+                <div className="flexbox">
+                  <div className="modalbox editbox">
+                    <button className="closebutton" onClick={toggleModal}>
+                      <i className="fa-solid fa-xmark" />
+                    </button>
+                    <h1>Confirm Deletion of this user:</h1>
+                    <h4 className="title">
+                      First Name:
+                      <p>
+                        <em>{originalData.FirstName}</em>
+                      </p>
+                    </h4>
+                    <h4>
+                      Last Name:
+                      <p>
+                        <em>{originalData.LastName}</em>
+                      </p>
+                    </h4>
+                    <h4>
+                      Date Of Birth:
+                      <p>
+                        <em>{originalData.DateBirth}</em>
+                      </p>
+                    </h4>
+                    <h4>
+                      Spoken Languages:
+                      <p>
+                        <em>{originalData.Languages}</em>
+                      </p>
+                    </h4>
+                    <h4>
+                      Funding Source:
+                      <p>
+                        <em>{originalData.FundingSource}</em>
+                      </p>
+                    </h4>
+                    <button
+                      className="backbutton"
+                      type="submit"
+                      color="primary"
+                      onClick={backPage}
+                    >
+                      Go Back
+                    </button>
+                    <button
+                      className="submitbutton"
+                      type="submit"
+                      color="primary"
+                      onClick={deleteUser}
+                    >
+                      Confirm
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </>
+          );
+        case 3:
+          return (
+            <div>
+              <img src="/DualRing.svg" />
+              <h3>Creating User!</h3>
+              <h4>Page will refresh shortly...</h4>
+            </div>
           );
       }
   }
