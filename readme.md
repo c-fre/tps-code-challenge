@@ -1,4 +1,4 @@
-# Cole F - Turnpoint Code Challenge
+# Cole F - TPS Code Challenge
 
 ## To Run the App:
 
