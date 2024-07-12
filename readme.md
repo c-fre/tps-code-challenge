@@ -1,5 +1,8 @@
 # Cole F - TPS Code Challenge
 
+## NOTE:
+The Main branch is the submitted version of my challenge. I have since recieved great feedback & will be continuing reworking this in a seperate branch to further my knowledge!
+
 ## To Run the App:
 
 ### 1. Download Code
