@@ -1,13 +1,15 @@
-# Cole F - TPS Code Challenge
+# Cole F - TPS Code Challenge REWORK
 
 ## NOTE:
-The Main branch is the submitted version of my challenge. I have since recieved great feedback & will be continuing reworking this in a seperate branch to further my knowledge!
+
+This is the reworked version that I am improving based on feedback from the initial submission!
+(WORK IN PROGRESS!!)
 
 ## To Run the App:
 
 ### 1. Download Code
 
-Download code from this Github
+Download code from this branch (rework)
 
 ### 2. Run Server (DB / Express)
 
@@ -21,14 +23,8 @@ cd ./client-react/<br/>
 npm i<br/>
 npm run dev
 
-## Decisions - Modules:
+## Changes / Improvements from Initial Submission:
 
-CORS Module - Allow module to safely handle CORS Requests
+- Changing Express.js base to Sequelize to allow cleaner back-end api code.
 
-SQLite - Used as it is very lightweight & can be locally stored easily
-
-## Decisions - Design:
-
-3 Part Wizard - I decided to make the wizard modal a 3 page form, although considering making the steps all inputs, but decided on making the final page display on information / confirm page.
-
-DB User List - I was going to use Bootstrap for the table design, but decided against to display css ability.
+- Adapting front-end to api change, while cleaning code & improving design.
